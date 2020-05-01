@@ -2,9 +2,8 @@ pipeline {
     agent { label 'master' }
     stages {
         stage('Build') {
-            options { checkoutToSubdirectory('sources') }
             steps {
-                checkout scm
+                dir ('sources') { checkout scm }
                 bat '''
                 dir
                 set
