@@ -25,12 +25,12 @@ pipeline {
                 checkoutToSubdirectory('script')
             }
             steps {
-                dir ('sources') { 
+                dir ('scripts') { 
                     git url: 'https://github.com/gjabouley-invn/subtreetest_child1.git',
                         branch: 'master',
                         poll: false
                 }
-                echo 'Releasing ASIC ${BRANCH_NAME} / ${TAG_NAME} / ${GIT_COMMIT}'
+                echo 'Releasing ASIC ${env.BRANCH_NAME} / ${env.TAG_NAME} / ${env.GIT_COMMIT}'
                 bat '''
                 dir
                 set
