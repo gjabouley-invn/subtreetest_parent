@@ -13,18 +13,24 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Nothing to test yet'
+                bat '''
+                dir
+                set
+                '''
             }
         }
         stage('Release') {
-            when { buildingTag() }
+            // when { buildingTag() }
             options { 
                 checkoutToSubdirectory('script')
             }
             steps {
-                echo 'Releasing ASIC ${GIT_BRANCH} / ${TAG_NAME} / ${GIT_COMMIT}'
-                git url: 'https://github.com/gjabouley-invn/subtreetest_child1.git',
-                    branch: 'master',
-                    poll: false
+                dir ('sources') { 
+                    git url: 'https://github.com/gjabouley-invn/subtreetest_child1.git',
+                        branch: 'master',
+                        poll: false
+                }
+                echo 'Releasing ASIC ${BRANCH_NAME} / ${TAG_NAME} / ${GIT_COMMIT}'
                 bat '''
                 dir
                 set
