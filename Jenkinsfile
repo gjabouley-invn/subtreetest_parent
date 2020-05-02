@@ -30,7 +30,7 @@ pipeline {
                         branch: 'master',
                         poll: false
                 }
-                echo "Releasing ASIC ${BRANCH_NAME} / ${TAG_NAME} / ${GIT_COMMIT}"
+                echo "Releasing ASIC ${BRANCH_NAME} / ${GIT_COMMIT}"
                 bat '''
                 dir
                 set
